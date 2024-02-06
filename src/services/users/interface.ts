@@ -5,7 +5,8 @@ export interface IUser {
   email: string;
   username: string;
   password: string;
-  role?: "user" | "authenticated";
+  role?: "user";
+  terms?: boolean;
 }
 
 export interface IUserModel extends IUser, Model<IUser> {

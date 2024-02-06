@@ -15,7 +15,7 @@ export const login: RequestHandler = async (req, res, next) => {
       req.login(user, { session: false }, async (error) => {
         if (error) return next(error);
         const token = jwt.sign({ id: user._id, role: user.role }, config.JWT_SECRET!);
-        return res.status(200).json({ token });
+        return res.status(200).json({ token, auth: true });
       });
     } catch (error: any) {
       return res.status(501).json({ message: "server error ocurred" });
@@ -33,7 +33,7 @@ export const signup: RequestHandler = async (req, res, next) => {
       req.login(user, { session: false }, async (error) => {
         if (error) return next(error);
         const token = jwt.sign({ id: user._id, role: user.role }, config.JWT_SECRET!);
-        return res.status(200).json({ token });
+        return res.status(200).json({ token, auth: true });
       });
     } catch (error) {
       return res.status(501).json({ message: "server error ocurred" });

@@ -9,10 +9,12 @@ import routes from "./router";
 //express app.
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: "*" }));
 app.use(morgan("dev"));
 
 //routes
-app.use("/", routes);
+app.use("/api", routes);
 
 export default app;

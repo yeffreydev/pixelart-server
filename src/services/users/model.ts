@@ -16,8 +16,12 @@ export const UserSchema = new Schema<IUserModel>({
   role: {
     type: String,
     required: true,
-    unique: false,
     default: "user",
+  },
+  terms: {
+    type: Boolean,
+    required: true,
+    default: true,
   },
   password: {
     type: String,
